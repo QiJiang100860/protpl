@@ -1,0 +1,16 @@
+{
+    "host":{
+        "url":"http://basehosturl",
+        "port":"8080"
+    },
+    "frame": {
+        "left": true,
+        "header": true,
+        "footer": false,
+        "nav": true,
+        "breadcrumb": false
+    },
+    "other": {
+
+    }
+}

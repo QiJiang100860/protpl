@@ -1,47 +1,58 @@
 <template>
   <div class="left-wrapper">
-    <el-menu
-      default-active="2"
-      class="el-menu-vertical-demo"
-    >
-      <el-submenu index="1">
-        <template slot="title">
-          <i class="el-icon-location"></i>
-          <span>导航一</span>
-        </template>
-        <el-menu-item-group>
-          <el-menu-item index="1-1">选项1</el-menu-item>
-          <el-menu-item index="1-2">选项2</el-menu-item>
-        </el-menu-item-group>
-      </el-submenu>
-      <el-menu-item index="2">
-        <i class="el-icon-menu"></i>
-        <span slot="title">导航二</span>
-      </el-menu-item>
+    <el-menu class="el-menu-vertical-demo" router unique-opened>
+      <div v-for="(item,index) in routers" :key="index">
+        <el-submenu :index="item.path" v-if="item.children.length>1">
+          <template slot="title">
+            <i class="el-icon-location"></i>
+            <span>{{item.meta.title}}</span>
+          </template>
+          <el-menu-item-group>
+            <el-menu-item
+              v-for="(citem,cindex) in item.children"
+              :key="cindex"
+              :index="item.path+'/'+citem.path"
+            >{{citem.meta.title}}</el-menu-item>
+          </el-menu-item-group>
+        </el-submenu>
+
+        <el-menu-item :index="item.path" v-else>
+          <i class="el-icon-menu"></i>
+          <span slot="title">{{item.meta.title}}</span>
+        </el-menu-item>
+      </div>
     </el-menu>
   </div>
 </template>
 
 <script>
 export default {
-    data(){
-        return {
-
-        }
-    },
-    created(){
-        console.log(this.$router.options.routes)
+  data() {
+    return {
+      routers: []
+    };
+  },
+  created() {
+    this.filterRouter();
+  },
+  methods: {
+    // 暂时在这里过滤路由，将来依赖借口返回值
+    filterRouter() {
+      this.routers = this.$router.options.routes.filter(item => {
+        return item.isMeau;
+      });
     }
-}
+  }
+};
 </script>
 
 <style lang="less" scoped>
-.left-wrapper{
-    position: fixed;
-    width: 180px;
-    top: 70px;
-    left: 0;
-    height: 100%;
-    background: #000;
+.left-wrapper {
+  position: fixed;
+  width: 180px;
+  top: 70px;
+  left: 0;
+  height: 100%;
+  background: #000;
 }
 </style>

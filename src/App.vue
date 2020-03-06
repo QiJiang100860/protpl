@@ -1,13 +1,11 @@
 <template>
   <div id="app">
-    <p-frame></p-frame>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import PFrame from "@/views/PFrame";
 export default {
-  components: { PFrame },
   data() {
     return {
       test: "123"

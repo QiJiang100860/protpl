@@ -1,5 +1,5 @@
 <template>
-  <div class="home">{{env}}</div>
+  <div class="home">home-{{env}}</div>
 </template>
 
 <script>
