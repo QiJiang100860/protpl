@@ -6,9 +6,9 @@
     "frame": {
         "left": true,
         "header": true,
-        "footer": false,
+        "footer": true,
         "nav": true,
-        "breadcrumb": false
+        "breadcrumb": true
     },
     "other": {
 

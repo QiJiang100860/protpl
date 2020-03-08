@@ -1,3 +1,14 @@
 <template>
-    <div>登陆</div>
+    <div>
+        <el-button @click="login">登陆</el-button>
+    </div>
 </template>
+<script>
+export default {
+    methods:{
+        login(){
+            this.$router.push({path:"/home"})
+        }
+    }
+}
+</script>

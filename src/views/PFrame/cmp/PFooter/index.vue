@@ -8,5 +8,8 @@
     bottom: 0;
     height: 40px;
     text-align: center;
+    line-height: 40px;
+    background: #000;
+    color: #fff;
 }
 </style>
