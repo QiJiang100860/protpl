@@ -2,7 +2,7 @@
   <div class="header-wrapper">
     <div class="text">
       <img class="logo" :src="require('@/assets/logo.png')" alt />
-      <span>中移上研院工业APP</span>
+      <span>闲来无事</span>
     </div>
 
     <div class="time">
