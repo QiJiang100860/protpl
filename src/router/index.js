@@ -2,13 +2,11 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import PFrame from '@/views/PFrame/'
 import sPage from "./sPage.js"
+import oPage from "./oPage.js"
 Vue.use(VueRouter)
 const _import = file => () => import('@/views/' + file + '.vue')
 const routes = [
-  {
-    path: "/",
-    redirect: 'login'
-  },
+  ...oPage.routers,
   ...sPage.routers,
   {
     path: '/home',
@@ -36,7 +34,6 @@ const routes = [
       { path: 'roles', component: _import('system/roles'), name: 'system_roles', meta: { title: '系统角色' } },
     ]
   },
-  { path: '*', redirect: '/404', hidden: true }
 ]
 
 const router = new VueRouter({
